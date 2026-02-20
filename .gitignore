@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.log
+
+# Keep plugins folder but ignore actual plugin files (large binaries)
+plugins/*
+!plugins/.gitkeep

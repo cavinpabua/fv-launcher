@@ -1,0 +1,62 @@
+{
+  "name": "flash-player",
+  "version": "1.0.0",
+  "description": "Cross-platform Flash player using Pepper Flash",
+  "main": "main.js",
+  "scripts": {
+    "start": "arch -x86_64 electron .",
+    "build": "electron-builder",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win",
+    "build:linux": "electron-builder --linux"
+  },
+  "build": {
+    "appId": "com.flash.player",
+    "productName": "Flash Player",
+    "icon": "logo.png",
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "plugins/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "plugins",
+        "to": "plugins"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.games",
+      "icon": "logo.png",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": "arm64"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": "x64"
+        }
+      ],
+      "icon": "logo.ico"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": "x64"
+        }
+      ],
+      "icon": "logo.png"
+    }
+  },
+  "devDependencies": {
+    "electron": "12.2.3",
+    "electron-builder": "^22.14.13"
+  }
+}

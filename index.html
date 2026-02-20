@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Flash Player - Setup</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #fff;
+      margin: 0;
+      padding: 40px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 28px;
+    }
+    .subtitle {
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+    h2 {
+      font-size: 18px;
+      margin: 25px 0 15px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    .step {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .step-number {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background: #0f3460;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    code {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 13px;
+    }
+    .path {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 4px;
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 12px;
+      word-break: break-all;
+    }
+    .platform {
+      display: inline-block;
+      padding: 3px 8px;
+      background: #0f3460;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-right: 8px;
+    }
+    .note {
+      background: rgba(255, 193, 7, 0.2);
+      border-left: 3px solid #ffc107;
+      padding: 10px 15px;
+      margin: 20px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    a {
+      color: #90CAF9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Flash Player</h1>
+    <p class="subtitle">Flash plugin not found - follow the steps below to set it up</p>
+
+    <h2>Step 1: Get the Pepper Flash Plugin</h2>
+
+    <div class="step">
+      <span class="platform">macOS</span>
+      Check if you have it from old Chrome:
+      <span class="path">/Library/Internet Plug-Ins/PepperFlashPlayer/PepperFlashPlayer.plugin</span>
+      Or extract from Chrome 87 or earlier:
+      <span class="path">/Applications/Google Chrome.app/Contents/Versions/*/Google Chrome Framework.framework/Internet Plug-Ins/PepperFlashPlayer.plugin</span>
+    </div>
+
+    <div class="step">
+      <span class="platform">Windows</span>
+      Check system directory:
+      <span class="path">C:\Windows\System32\Macromed\Flash\pepflashplayer64_32_0_0_465.dll</span>
+      Or extract from old Chrome installation.
+    </div>
+
+    <div class="step">
+      <span class="platform">Linux</span>
+      Search for:
+      <span class="path">libpepflashplayer.so</span>
+    </div>
+
+    <div class="note">
+      <strong>Can't find it?</strong> Search the Internet Archive for "Pepper Flash 32.0.0.465" for your platform.
+    </div>
+
+    <h2>Step 2: Copy to Plugins Folder</h2>
+
+    <div class="step">
+      Copy the plugin file to the <code>plugins</code> folder next to this app:
+      <span class="path">plugins/PepperFlashPlayer.plugin (Mac)</span>
+      <span class="path">plugins/pepflashplayer64.dll (Windows)</span>
+      <span class="path">plugins/libpepflashplayer.so (Linux)</span>
+    </div>
+
+    <h2>Step 3: Restart the App</h2>
+
+    <div class="step">
+      Close and reopen Flash Player. The game should load automatically!
+    </div>
+
+    <div class="note">
+      <strong>Game URL:</strong> By default, the player connects to <code>https://example.com/flash-game</code>.
+      You can change this by setting the <code>GAME_URL</code> environment variable.
+    </div>
+  </div>
+</body>
+</html>
