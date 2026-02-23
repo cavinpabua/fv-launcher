@@ -292,9 +292,9 @@ function createWindow() {
     mainWindow.loadFile('index.html');
   }
 
-  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+  mainWindow.webContents.on('new-window', (event, url) => {
+    event.preventDefault();
     shell.openExternal(url);
-    return { action: 'deny' };
   });
 
   mainWindow.on('closed', () => {
