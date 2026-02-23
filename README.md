@@ -1,6 +1,6 @@
 # Flash Player
 
-A cross-platform Electron-based Flash player using Pepper Flash.
+A cross-platform Electron-based Flash player using Clean Flash Player.
 
 ## Quick Start
 
@@ -14,40 +14,37 @@ npm start
 
 ## Setup
 
-### 1. Get Pepper Flash Plugin
+### 1. Check for Updated Plugins (Optional)
 
-You need the Pepper Flash plugin (version 32.0.0.465 - the last version before EOL).
+You should get the latest PPAPI Flash plugins available.
 
-**macOS:**
-- Check: `/Library/Internet Plug-Ins/PepperFlashPlayer/PepperFlashPlayer.plugin`
-- Or extract from Chrome 87 or earlier
+If the latest Windows and macOS version is 34.0.0.330, skip to step 3.
 
-**Windows:**
-- Check: `C:\Windows\System32\Macromed\Flash\pepflashplayer64_32_0_0_465.dll`
-- Or extract from old Chrome installation
+https://github.com/darktohka/clean-flash-builds
 
-**Linux:**
-- Search for `libpepflashplayer.so`
+### 2. Update Bundled Plugins (Optional)
 
-**Can't find it?** Search Internet Archive for "Pepper Flash 32.0.0.465"
-
-### 2. Install Plugin
-
-Copy the plugin to the `plugins/` directory:
+Copy any updated plugins to the `plugins/` directory:
 
 ```
 plugins/
-├── PepperFlashPlayer.plugin  (macOS)
-├── pepflashplayer64.dll      (Windows 64-bit)
 ├── pepflashplayer.dll        (Windows 32-bit)
-└── libpepflashplayer.so      (Linux)
+├── pepflashplayer64.dll      (Windows 64-bit)
+├── flash.plugin              (macOS 64-bit)
+└── libpepflashplayer.so      (Linux 32-bit)
+└── libpepflashplayer64.so    (Linux 64-bit)
 ```
 
 ### 3. Configure Game URL
 
-By default connects to `https://example.com/flash-game`
+By default, the app connects to `https://example.com/flash-game`.
 
-Change via environment variable:
+Change via environment variable (Windows):
+```batch
+set GAME_URL=https://your-server.com/game && npm start
+```
+
+Change via environment variable (macOS / Linux):
 ```bash
 GAME_URL=https://your-server.com/game npm start
 ```
@@ -74,18 +71,18 @@ npm run build:win
 npm run build:linux
 ```
 
-Outputs go to `dist/` folder.
+Outputs go to the `dist/` directory.
 
 ## Requirements
 
 - Node.js 20+
-- Pepper Flash plugin (32.0.0.465)
+- PPAPI Flash plugins
 
 ## Notes
 
-- Uses Electron 11.5.0 (last version with Pepper Flash support)
-- Flash reached End of Life in December 2020
-- This is for personal/educational use with your own Flash content
+- This app uses Electron 11.5.0 for PPAPI support.
+- The latest Flash Player updates are provided by an Adobe partner.
+- This is for personal/educational use with your own Flash content.
 
 ## License
 

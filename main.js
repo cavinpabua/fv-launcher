@@ -19,17 +19,15 @@ function getFlashPluginPath() {
     case 'win32':
       const win64 = path.join(pluginsDir, 'pepflashplayer64.dll');
       const win32 = path.join(pluginsDir, 'pepflashplayer.dll');
-      return fs.existsSync(win64) ? win64 : win32;
+      return (process.arch === 'x64') ? win64 : win32;
 
     case 'darwin':
-      const systemPath = '/Library/Internet Plug-Ins/PepperFlashPlayer/PepperFlashPlayer.plugin';
-      if (fs.existsSync(systemPath)) {
-        return systemPath;
-      }
-      return path.join(pluginsDir, 'PepperFlashPlayer.plugin');
+      return path.join(pluginsDir, 'flash.plugin'); // x64 only
 
     case 'linux':
-      return path.join(pluginsDir, 'libpepflashplayer.so');
+      const lin64 = path.join(pluginsDir, 'libpepflashplayer64.so');
+      const lin32 = path.join(pluginsDir, 'libpepflashplayer.so');
+      return (process.arch === 'x64') ? lin64 : lin32;
 
     default:
       return null;
@@ -37,7 +35,7 @@ function getFlashPluginPath() {
 }
 
 function getFlashVersion() {
-  return '32.0.0.344';
+  return (process.platform === 'linux') ? '34.0.0.137' : '34.0.0.330';
 }
 
 function initializeFlash() {
