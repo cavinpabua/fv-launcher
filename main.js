@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const CONFIG = {
   gameUrl: process.env.GAME_URL || 'https://example.com/flash-game',
-  fullscreen: true,
+  fullscreen: false,
   width: 1280,
   height: 800,
   resizable: true
